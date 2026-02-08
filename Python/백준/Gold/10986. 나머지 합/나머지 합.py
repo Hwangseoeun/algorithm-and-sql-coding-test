@@ -13,11 +13,14 @@ for i in range(len(A)):
         S[i] = S[i-1] + A[i]
 
 check = [0] * len(S)
+result = 0
 
 for i in range(len(S)):
     check[i] = S[i] % M
+    
+    if check[i] == 0:
+        result += 1
 
-result = 0
 count = {}
 
 for i in check:
@@ -26,9 +29,5 @@ for i in check:
 
 for num in count.values():
     result += num * (num - 1) // 2
-
-for i in range(len(check)):
-    if check[i] == 0:
-        result += 1
 
 print(result)
