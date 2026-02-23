@@ -1,5 +1,3 @@
-import copy
-
 N = int(input())
 
 count = 0
