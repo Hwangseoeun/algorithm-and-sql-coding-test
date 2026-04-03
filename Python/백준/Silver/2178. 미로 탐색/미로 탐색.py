@@ -11,7 +11,7 @@ visited = [[False] * M for _ in range(N)]
 count = [[0] * M for _ in range(N)]
 directions = [[-1,0], [0,1], [1,0], [0,-1]]
 
-def dfs():
+def bfs():
     global count, visited
     
     arr = deque()
@@ -32,5 +32,5 @@ def dfs():
                     visited[next_x][next_y] = True
                     count[next_x][next_y] = count[current_x][current_y] + 1
 
-dfs()
+bfs()
 print(count[N-1][M-1])
