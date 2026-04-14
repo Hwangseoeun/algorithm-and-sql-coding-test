@@ -45,8 +45,6 @@ for i in range(0, len(negative), 2):
     else:
         sum += negative[i] * negative[i+1]
 
-while one_cnt > 0:
-    sum += 1
-    one_cnt -= 1
+sum += one_cnt
 
 print(sum)
