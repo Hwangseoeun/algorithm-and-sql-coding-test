@@ -1,7 +1,7 @@
 def solution(s):
     arr = []
     
-    for i in list(s):
+    for i in s:
         if i == '(':
             arr.append(i)
         
@@ -10,8 +10,5 @@ def solution(s):
                 return False
             else:
                 arr.pop()
-    
-    if arr:
-        return False
 
-    return True
+    return not arr
