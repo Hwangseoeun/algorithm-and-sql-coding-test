@@ -1,24 +1,24 @@
 import math
+from collections import deque
 
 def solution(progresses, speeds):
     answer = []
-    day = []
+    days = []
     
     for i in range(len(progresses)):
-        day.append(math.ceil((100 - progresses[i]) / speeds[i]))
+        days.append(math.ceil((100 - progresses[i]) / speeds[i]))
     
-    temp_day = day[0]
+    q = deque(days)
     count = 0
     
-    for d in day:
-        if d <= temp_day:
-            count += 1
+    while q:
+        day = q.popleft()
+        count = 1
         
-        else:
-            answer.append(count)
-            temp_day = d
-            count = 1
+        while q and q[0] <= day:
+            q.popleft()
+            count += 1
     
-    answer.append(count)
+        answer.append(count)
     
     return answer
