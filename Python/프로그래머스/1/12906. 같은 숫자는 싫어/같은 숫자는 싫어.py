@@ -1,8 +1,4 @@
-def solution(arr):
-    answer = []
-    
-    for i in arr:
-        if answer[-1:] != [i]:
-            answer.append(i)
-    
-    return answer
+from itertools import groupby
+
+def solution(arr):    
+    return [k for k, _ in groupby(arr)]
