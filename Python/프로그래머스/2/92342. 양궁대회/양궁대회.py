@@ -1,9 +1,9 @@
 def solution(n, info):
-    max_dif = 0
     answer = [-1]
+    max_dif = 0
     
     def back(idx, cnt, ryan):
-        nonlocal max_dif, answer
+        nonlocal answer, max_dif
         
         if idx == 11 or cnt == 0:
             temp = ryan[:]
@@ -11,37 +11,32 @@ def solution(n, info):
             if cnt > 0:
                 temp[10] += cnt
             
-            a_score, r_score = 0, 0
+            dif = 0
             
             for i in range(11):
-                if info[i] == 0 and temp[i] == 0:
+                if temp[i] == 0 and info[i] == 0:
                     continue
-                
-                if info[i] < temp[i]:
-                    r_score += (10-i)
-                
+                elif temp[i] > info[i]:
+                    dif += (10-i)
                 else:
-                    a_score += (10-i)
-            
-            dif = r_score - a_score
+                    dif -= (10-i)
             
             if dif > 0:
                 if dif > max_dif:
-                    max_dif = dif
                     answer = temp[:]
-                    
+                    max_dif = dif
                 elif dif == max_dif:
                     if answer[::-1] < temp[::-1]:
                         answer = temp[:]
             return
-
-        if cnt >= info[idx] + 1:
+            
+        elif info[idx] < cnt:
             ryan[idx] = info[idx] + 1
-            back(idx + 1, cnt - (info[idx] + 1), ryan)
+            back(idx+1, cnt-(info[idx] + 1), ryan)
             ryan[idx] = 0
         
         back(idx+1, cnt, ryan)
         
-    back(0, n, [0]*11)
+    back(0, n, [0] * 11)
     
     return answer
