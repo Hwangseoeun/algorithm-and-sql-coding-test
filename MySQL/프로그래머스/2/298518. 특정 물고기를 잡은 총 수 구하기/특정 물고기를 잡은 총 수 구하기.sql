@@ -1,0 +1,1 @@
+select count(*) as FISH_COUNT from FISH_INFO as fi join FISH_NAME_INFO as fni where fi.FISH_TYPE = fni.FISH_TYPE and fni.FISH_NAME in ('BASS', 'SNAPPER');
